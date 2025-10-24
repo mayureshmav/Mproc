@@ -1,0 +1,15 @@
+Terminal : py -m pip install mysql-connector-python   connector for SQL
+
+
+school_crm/
+├── src/
+│   ├── app/
+│   │   ├── templates/       # HTML files
+│   │   ├── static/          # CSS, JS, images
+│   │   ├── models/          # SQLAlchemy models
+│   │   ├── routes/          # Flask routes
+│   │   ├── db.py            # DB connection
+│   │   └── config.py        # DB config
+├── run.py                   # Entry point
+├── requirements.txt         # Dependencies
+└── .env                     # Secrets
