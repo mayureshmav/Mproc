@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Orders | Supplier | MProc</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4faff;
+            margin: 0;
+            padding: 30px;
+        }
+        h2 {
+            color: #0078d4;
+            margin-bottom: 20px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        select, input, button {
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 13px;
+        }
+        th {
+            background-color: #e6f7ff;
+        }
+        .actions button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📄 Supplier Purchase Order Management</h2>
+
+    <div class="section">
+        <label for="po_action">Choose Action</label>
+        <select id="po_action" onchange="handlePOAction(this.value)">
+            <option disabled selected>Choose Action</option>
+            <option value="#inbox">PO Inbox</option>
+            <option value="#acknowledge">Acknowledge PO</option>
+            <option value="#download">Download PO</option>
+        </select>
+    </div>
+
+    <!-- PO Inbox -->
+    <div class="section" id="inbox">
+        <h3>📥 PO Inbox</h3>
+        <label>Filter by Status</label>
+        <select>
+            <option>All</option>
+            <option>New</option>
+            <option>Acknowledged</option>
+            <option>Dispatched</option>
+        </select>
+
+        <table>
+            <tr><th>PO Number</th><th>Date</th><th>Status</th><th>Transmission</th><th>Actions</th></tr>
+            <tr>
+                <td>PO-2025-001</td>
+                <td>2025-10-28</td>
+                <td>New</td>
+                <td>Email</td>
+                <td class="actions">
+                    <button onclick="acknowledgePO('PO-2025-001')">Acknowledge</button>
+                    <button onclick="downloadPO('PO-2025-001')">Download</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Acknowledge PO -->
+    <div class="section" id="acknowledge">
+        <h3>✅ Acknowledge PO</h3>
+        <form method="POST" action="/supplier/po/acknowledge">
+            <label>Enter PO Number</label>
+            <input type="text" name="po_number" required>
+            <button type="submit">Acknowledge</button>
+        </form>
+    </div>
+
+    <!-- Download PO -->
+    <div class="section" id="download">
+        <h3>📄 Download PO</h3>
+        <form method="GET" action="/supplier/po/download">
+            <label>Enter PO Number</label>
+            <input type="text" name="po_number" required>
+            <button type="submit">Download PDF</button>
+        </form>
+    </div>
+
+    <script>
+        function handlePOAction(anchor) {
+            if (anchor.startsWith('#')) {
+                document.querySelector(anchor).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function acknowledgePO(poNumber) {
+            alert(`PO ${poNumber} acknowledged.`);
+            // You can wire this to a POST request via fetch or form submission
+        }
+
+        function downloadPO(poNumber) {
+            alert(`Downloading PO ${poNumber}...`);
+            // You can wire this to a GET request or trigger file download
+        }
+    </script>
+
+</body>
+</html>
