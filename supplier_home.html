@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier Dashboard | MProc</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #e6f7ff;
+        }
+        .header {
+            background: #0078d4;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+        .tile {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .tile h3 {
+            margin-top: 0;
+            color: #0078d4;
+            font-size: 18px;
+        }
+        .tile select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="{{ url_for('static', filename='image/mproc.jpg') }}" alt="MProc Logo">
+        <h1>Supplier Dashboard</h1>
+    </div>
+
+    <div class="dashboard">
+
+        <div class="tile">
+            <h3>🏷️ Identity & Profile</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">View/Edit Profile</option>
+                <option value="#">Compliance Documents</option>
+                <option value="#">Status Overview</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>📦 Catalogue Management</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Manage Items</option>
+                <option value="#">Bulk Upload</option>
+                <option value="#">Price Breaks</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>📄 Purchase Orders</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">PO Inbox</option>
+                <option value="#">Acknowledge PO</option>
+                <option value="#">Download PO</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>💰 Invoice Management</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Submit Invoice</option>
+                <option value="#">Track Payments</option>
+                <option value="#">Upload Documents</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>📋 RFQs & Quotations</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">View RFQs</option>
+                <option value="#">Submit Quotation</option>
+                <option value="#">Compare Quotations</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>📊 Performance & Analytics</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Scorecard</option>
+                <option value="#">Spend Summary</option>
+                <option value="#">Compliance Status</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>📬 Communication & Alerts</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Messages</option>
+                <option value="#">Notifications</option>
+                <option value="#">Email Preferences</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>⚙️ Settings & Configuration</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Transmission Method</option>
+                <option value="#">Payment Terms</option>
+                <option value="#">Security Settings</option>
+            </select>
+        </div>
+
+        <div class="tile">
+            <h3>🧪 Optional Tools</h3>
+            <select onchange="location = this.value;">
+                <option disabled selected>Choose Action</option>
+                <option value="#">Contract Repository</option>
+                <option value="#">Dispute Center</option>
+                <option value="#">Audit Trail</option>
+            </select>
+        </div>
+
+    </div>
+
+</body>
+</html>
